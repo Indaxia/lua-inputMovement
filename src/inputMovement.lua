@@ -3,7 +3,7 @@ if(_G["WM"] == nil) then WM = (function(m,h) h(nil,(function() end), (function(e
 -- Warcraft 3 inputMovement module by ScorpioT1000 / 2020
 -- Thanks to NazarPunk for common.j.lua
 -- Converts pressed keys to Vector3
--- Fires "input.movement" event with the data.destination and data.rawVector params of type wGeometry.Vector3
+-- Fires "input.movement" event with the data.destination, data.rawVector params of type wGeometry.Vector3 and data.keyId
 WM("inputMovement", function(import, export, exportDefault)
   local eventDispatcher = (_G["eventDispatcher"] == nil) and import("eventDispatcher") or eventDispatcher
   local wGeometry = (_G["wGeometry"] == nil) and import("wGeometry") or wGeometry
@@ -17,7 +17,7 @@ WM("inputMovement", function(import, export, exportDefault)
     BACKWARD = OSKEY_S,
     LEFT = OSKEY_A,
     RIGHT = OSKEY_D,
-    UP = OSKEY_LSHIFT,
+    UP = OSKEY_SPACE,
     DOWN = OSKEY_LCONTROL
   }
   
@@ -59,7 +59,8 @@ WM("inputMovement", function(import, export, exportDefault)
       
       eventDispatcher.dispatch("input.movement", {
         destination = destination,
-        rawVector = newKeyVector
+        rawVector = newKeyVector,
+        keyId = pressedKeyId
       })
     else
       print("inputMovement Error: onUserKeyEvent non-registered key event")
