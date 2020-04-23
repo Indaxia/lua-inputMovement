@@ -3,6 +3,7 @@ if(_G["WM"] == nil) then WM = (function(m,h) h(nil,(function() end), (function(e
 -- Warcraft 3 inputMovement module by ScorpioT1000 / 2020
 -- Thanks to NazarPunk for common.j.lua
 -- Converts pressed keys to Vector3
+-- Fires "input.movement" event with the data.destination and data.rawVector params of type wGeometry.Vector3
 WM("inputMovement", function(import, export, exportDefault)
   local eventDispatcher = (_G["eventDispatcher"] == nil) and import("eventDispatcher") or eventDispatcher
   local wGeometry = (_G["wGeometry"] == nil) and import("wGeometry") or wGeometry
@@ -38,19 +39,28 @@ WM("inputMovement", function(import, export, exportDefault)
     local pl = GetTriggerPlayer()
     local pressedKeyId = keyMapInverted[BlzGetTriggerPlayerKey()]
     if(pressedKeyId ~= nil) then
-      if(BlzGetTriggerPlayerIsKeyDown()) then
-        states[pl][pressedKeyId] = keyToVectorMap[pressedKeyId]
-      else
-        states[pl][pressedKeyId] = Vector3:new()
+      local newKeyVector = BlzGetTriggerPlayerIsKeyDown() 
+        and keyToVectorMap[pressedKeyId] 
+        or Vector3:new()
+      
+      if(states[pl][pressedKeyId] == newKeyVector) then
+        return -- avoid duplicate events
       end
       
+      states[pl][pressedKeyId] = newKeyVector
+      
       local destination = Vector3:new()
-      for keyId, keyVector in ipairs(states[pl]) do
+      for keyId, keyVector in pairs(states[pl]) do
         destination = destination + keyVector
       end
-      destination = destination:normalize()
-      print(states[pl][pressedKeyId])
-      print(destination)
+      if(not destination:isZero()) then
+        destination = destination:normalize()
+      end
+      
+      eventDispatcher.dispatch("input.movement", {
+        destination = destination,
+        rawVector = newKeyVector
+      })
     else
       print("inputMovement Error: onUserKeyEvent non-registered key event")
     end
@@ -64,7 +74,11 @@ WM("inputMovement", function(import, export, exportDefault)
       local pl = GetEnumPlayer()
       for keyId,key in pairs(keyMap) do
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, true)
-        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, false)    
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, false)
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, true)
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, false)  
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, true)
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, false)  
       end
       TriggerAddAction(trigger, onUserKeyEvent)
       inputMovementTriggers[id] = trigger
