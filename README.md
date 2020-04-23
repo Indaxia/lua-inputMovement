@@ -2,7 +2,10 @@ Lua inputMovement
 
 ## Installation
 
-### Copy code from /src and use inputMovement global
+### Manual
+- Install https://github.com/Indaxia/lua-eventDispatcher
+- Install https://github.com/Indaxia/lua-wGeometry
+- Copy code from /src and use inputMovement global
 
 ### *OR* use [WLPM](https://github.com/Indaxia/wc3-wlpm-module-manager)
 ```

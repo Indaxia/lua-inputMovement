@@ -2,7 +2,9 @@
     "title": "Warcraft 3 Lua inputMovement",
     "author": "ScorpioT1000 / scorpiot1000@yandex.ru", 
     "license": "MIT",
-    "dependencies": {     
+    "dependencies": {
+        "https://github.com/Indaxia/lua-eventDispatcher": "*",
+        "https://github.com/Indaxia/lua-wGeometry": "*"
     },
     "sources": [
       "src"
