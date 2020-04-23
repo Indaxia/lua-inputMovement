@@ -12,9 +12,11 @@ Lua inputMovement
 wlpm install https://github.com/Indaxia/lua-inputMovement
 ```
 
+## Demo
+
+https://www.youtube.com/watch?v=d4r4qZIZg_0
+
 ## Usage
 
-```lua
+see /test
 
-
-```
