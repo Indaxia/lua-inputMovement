@@ -22,6 +22,9 @@ see /test
 
 ```
 eventDispatcher.on("input.movement", function(event)
+    -- Player pressed the key
+    event.data.player
+
     -- Vector3 destination normal
     event.data.destination
     

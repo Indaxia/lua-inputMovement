@@ -58,6 +58,7 @@ WM("inputMovement", function(import, export, exportDefault)
       end
       
       eventDispatcher.dispatch("input.movement", {
+        player = pl,
         destination = destination,
         rawVector = newKeyVector,
         keyId = pressedKeyId
