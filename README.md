@@ -20,3 +20,16 @@ https://www.youtube.com/watch?v=d4r4qZIZg_0
 
 see /test
 
+```
+eventDispatcher.on("input.movement", function(event)
+    -- Vector3 destination normal
+    event.data.destination
+    
+    -- Vector3 current pressed/unpressed key normal (e.g. for jump)
+    event.data.rawVector
+    
+    -- string key id
+    event.data.keyId
+end)
+```
+
