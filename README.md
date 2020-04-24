@@ -36,4 +36,19 @@ eventDispatcher.on("input.movement", function(event)
 end)
 ```
 
+## Custom key map
+
+Call this on initialization 
+
+```
+inputMovement.changeKeyMap({
+    FORWARD = OSKEY_W,
+    BACKWARD = OSKEY_S,
+    LEFT = OSKEY_A,
+    RIGHT = OSKEY_D,
+    UP = OSKEY_SPACE,
+    DOWN = OSKEY_LCONTROL
+})
+```
+
 [See on XGM/Russian](https://xgm.guru/p/wc3/lua-inputmovement)
