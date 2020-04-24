@@ -36,3 +36,4 @@ eventDispatcher.on("input.movement", function(event)
 end)
 ```
 
+[See on XGM/Russian](https://xgm.guru/p/wc3/lua-inputmovement)
