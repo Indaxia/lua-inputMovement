@@ -1,5 +1,12 @@
 Lua inputMovement 
 
+The library turns keys W, A, S, D, Ctrl, Space into a [normalized Vector3](https://en.wikipedia.org/wiki/Unit_vector), which can be immediately applied to the unit.
+
+- Normalization secure management of all of these strifes and bunnyhopping uniformly directing a unit to any of the combinations of directions.
+- For convenience, it uses eventDispatcher, so you can connect to it literally in the GUI.
+- Itself registers on all players-people.
+- You can set your own set of keys.
+
 ## Installation
 
 ### Manual
