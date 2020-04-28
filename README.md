@@ -29,7 +29,7 @@ https://xgm.guru/files/100/245047/0.png
 
 https://xgm.guru/files/100/245047/1.png
 
-see /test
+the map is included at [/test](/test)
 
 ```
 eventDispatcher.on("input.movement", function(event)
