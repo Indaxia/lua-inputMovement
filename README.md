@@ -49,7 +49,7 @@ end)
 
 ## Custom key map
 
-Call this on initialization 
+Call this after 0.01 timer of the game time expires
 
 ```
 inputMovement.changeKeyMap({
