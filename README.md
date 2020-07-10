@@ -1,11 +1,11 @@
 Lua inputMovement 
 
-The library turns keys **W, A, S, D, Ctrl, Space** into a [normalized Vector3](https://en.wikipedia.org/wiki/Unit_vector), which can be immediately applied to the unit.
+The library turns **W, A, S, D, Ctrl, Space** keys into a [normalized Vector3](https://en.wikipedia.org/wiki/Unit_vector), which can be immediately applied to the unit.
 
-- Normalization secure management of all of these strifes and bunnyhopping uniformly directing a unit to any of the combinations of directions.
+- Normalization secures of all of these strifes and bunnyhopping uniformly directing a unit to any of combined directions.
 - For convenience, it uses **eventDispatcher**, so you can connect to it literally using GUI.
-- automatically registers on all players-people.
-- You can set your own set of keys.
+- automatically registers on all human players.
+- You can set your own key set
 
 ## Installation
 
@@ -49,7 +49,7 @@ end)
 
 ## Custom key map
 
-Call this after 0.01 timer of the game time expires
+Call this on 0.01 game timer expiration
 
 ```
 inputMovement.changeKeyMap({
