@@ -1,6 +1,6 @@
 Lua inputMovement 
 
-The library turns **W, A, S, D, Ctrl, Space** keys into a [normalized Vector3](https://en.wikipedia.org/wiki/Unit_vector), which can be immediately applied to the unit.
+The library turns **W, A, S, D, Ctrl, Space** keys into a [unit Vector3](https://en.wikipedia.org/wiki/Unit_vector), which can be immediately applied to the unit.
 
 - Normalization secures of all of these strifes and bunnyhopping uniformly directing a unit to any of combined directions.
 - For convenience, it uses **eventDispatcher**, so you can connect to it literally using GUI.
