@@ -12,7 +12,7 @@ The library turns **W, A, S, D, Ctrl, Space** keys into a [unit Vector3](https:/
 ### Manual
 - Install https://github.com/Indaxia/lua-eventDispatcher
 - Install https://github.com/Indaxia/lua-wGeometry
-- Copy code from /src and use eventDispatcher and inputMovement global
+- Copy code from [/src](/src) and use eventDispatcher and inputMovement global
 
 ### *OR* use [WLPM](https://github.com/Indaxia/wc3-wlpm-module-manager)
 ```
