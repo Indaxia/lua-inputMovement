@@ -32,7 +32,7 @@ WM("inputMovement", function(import, export, exportDefault)
     DOWN =      Vector3:new(0.,  0., -1.)
   }
   
-  -- @var states table of tables of Vector3
+  --- @var states table of tables of Vector3
   local states = {}
   
   local onUserKeyEvent = function()
@@ -113,15 +113,15 @@ WM("inputMovement", function(import, export, exportDefault)
   end
   
   -- Defines a new key map and re-registers triggers for all user players
-  -- @param newKeyMap table in format {
-  --  FORWARD = OSKEY_*,
-  --  BACKWARD = OSKEY_*,
-  --  LEFT = OSKEY_*,
-  --  RIGHT = OSKEY_*,
-  --  UP = OSKEY_*,
-  --  DOWN = OSKEY_*
-  -- }
-  -- @see https://github.com/nazarpunk/cheapack/blob/master/sdk/common.j.lua#L1287
+  --- @param newKeyMap table in format {
+  ---  FORWARD = OSKEY_*,
+  ---  BACKWARD = OSKEY_*,
+  ---  LEFT = OSKEY_*,
+  ---  RIGHT = OSKEY_*,
+  ---  UP = OSKEY_*,
+  ---  DOWN = OSKEY_*
+  --- }
+  --- @see https://github.com/nazarpunk/cheapack/blob/master/sdk/common.j.lua#L1287
   local changeKeyMap = function(newKeyMap)
     if(newKeyMap["FORWARD"] == nil
       or newKeyMap["BACKWARD"] == nil
