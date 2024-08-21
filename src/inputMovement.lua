@@ -67,12 +67,19 @@ WM("inputMovement", function(import, export, exportDefault)
       print("inputMovement Error: onUserKeyEvent non-registered key event")
     end
   end
+
+  local onUserMouseFixEvent = function()
+    if(GetLocalPlayer() == GetTriggerPlayer()) then
+      EnableUserControl(true)
+    end
+  end
   
   -- Registers input for all active players when it's imported
   local registerForUserPlayers = function()
     ForForce(GetPlayersByMapControl(MAP_CONTROL_USER), function ()
       local id = #inputMovementTriggers + 1
       local trigger = CreateTrigger()
+      local triggerMouseFix = CreateTrigger()
       local pl = GetEnumPlayer()
       for keyId,key in pairs(keyMap) do
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, true)
@@ -80,9 +87,12 @@ WM("inputMovement", function(import, export, exportDefault)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, true)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, false)  
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, true)
-        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, false)  
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, false)
+        TriggerRegisterPlayerEvent(triggerMouseFix, pl, EVENT_PLAYER_MOUSE_DOWN)
+        TriggerRegisterPlayerEvent(triggerMouseFix, pl, EVENT_PLAYER_MOUSE_UP)
       end
       TriggerAddAction(trigger, onUserKeyEvent)
+      TriggerAddAction(triggerMouseFix, onUserMouseFixEvent)
       inputMovementTriggers[id] = trigger
       states[pl] = {
         FORWARD =   Vector3:new(),
