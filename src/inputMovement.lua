@@ -11,6 +11,7 @@ WM("inputMovement", function(import, export, exportDefault)
 
   inputMovementInitTrigger = CreateTrigger()
   inputMovementTriggers = {}
+  inputMovementFixTriggers = {}
   
   local DEFAULT_KEY_MAP = {
     FORWARD = OSKEY_W,
@@ -85,7 +86,7 @@ WM("inputMovement", function(import, export, exportDefault)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, true)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 0, false)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, true)
-        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, false)  
+        BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 1, false)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, true)
         BlzTriggerRegisterPlayerKeyEvent(trigger, pl, key, 2, false)
         TriggerRegisterPlayerEvent(triggerMouseFix, pl, EVENT_PLAYER_MOUSE_DOWN)
@@ -94,6 +95,7 @@ WM("inputMovement", function(import, export, exportDefault)
       TriggerAddAction(trigger, onUserKeyEvent)
       TriggerAddAction(triggerMouseFix, onUserMouseFixEvent)
       inputMovementTriggers[id] = trigger
+      inputMovementFixTriggers[id] = triggerMouseFix
       states[pl] = {
         FORWARD =   Vector3:new(),
         BACKWARD =  Vector3:new(),
@@ -111,6 +113,10 @@ WM("inputMovement", function(import, export, exportDefault)
       DestroyTrigger(trigger)
     end
     inputMovementTriggers = {}
+    for i, trigger in ipairs(inputMovementFixTriggers) do
+      DestroyTrigger(trigger)
+    end
+    inputMovementFixTriggers = {}
     states = {}
   end
   
