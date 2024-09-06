@@ -2,8 +2,8 @@
 -- Thanks to NazarPunk for common.j.lua
 -- Converts pressed keys to Vector3
 -- Fires "input.movement" event with the data.destination, data.rawVector params of type wGeometry.Vector3 and data.keyId
-inputMovement = Imp.export("inputMovement", function()
-  local eventDispatcher = Imp.import(eventDispatcher)
+InputMovement = Imp.export("InputMovement", function()
+  local eventDispatcher = Imp.import(EventDispatcher)
   local wGeometry = Imp.import(wGeometry)
   local Vector3 = wGeometry.Vector3
 
