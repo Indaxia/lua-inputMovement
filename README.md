@@ -8,15 +8,9 @@ The library turns **W, A, S, D, Ctrl, Space** keys into a [unit Vector3](https:/
 - You can set your own key set
 
 ## Installation
-
-### Manual
-- Install https://github.com/Indaxia/lua-eventDispatcher
-- Install https://github.com/Indaxia/lua-wGeometry
-- Copy code from [/src](/src) and use eventDispatcher and inputMovement global
-
-### *OR* use [WLPM](https://github.com/Indaxia/wc3-wlpm-module-manager)
+Using https://github.com/Indaxia/imp
 ```
-wlpm install https://github.com/Indaxia/lua-inputMovement
+imp install https://github.com/Indaxia/lua-inputMovement
 ```
 
 ## Demo
@@ -32,7 +26,9 @@ https://xgm.guru/files/100/245047/1.png
 the map is included at [/test](/test)
 
 ```
-eventDispatcher.on("input.movement", function(event)
+local EventDispatcher = Imp.import(EventDispatcher)
+
+EventDispatcher.on("input.movement", function(event)
     -- Player pressed the key
     event.data.player
 
@@ -52,7 +48,9 @@ end)
 Call this on 0.01 game timer expiration
 
 ```
-inputMovement.changeKeyMap({
+local InputMovement = Imp.import(InputMovement)
+
+InputMovement.changeKeyMap({
     FORWARD = OSKEY_W,
     BACKWARD = OSKEY_S,
     LEFT = OSKEY_A,
