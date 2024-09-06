@@ -1,12 +1,10 @@
-if(_G["WM"] == nil) then WM = (function(m,h) h(nil,(function() end), (function(e) _G[m] = e end)) end) end -- WLPM MM fallback
-
 -- Warcraft 3 inputMovement module by ScorpioT1000 / 2020
 -- Thanks to NazarPunk for common.j.lua
 -- Converts pressed keys to Vector3
 -- Fires "input.movement" event with the data.destination, data.rawVector params of type wGeometry.Vector3 and data.keyId
-WM("inputMovement", function(import, export, exportDefault)
-  local eventDispatcher = (_G["eventDispatcher"] == nil) and import("eventDispatcher") or eventDispatcher
-  local wGeometry = (_G["wGeometry"] == nil) and import("wGeometry") or wGeometry
+inputMovement = Imp.export("inputMovement", function()
+  local eventDispatcher = Imp.import(eventDispatcher)
+  local wGeometry = Imp.import(wGeometry)
   local Vector3 = wGeometry.Vector3
 
   inputMovementInitTrigger = CreateTrigger()
@@ -159,9 +157,9 @@ WM("inputMovement", function(import, export, exportDefault)
     changeKeyMap(DEFAULT_KEY_MAP)
   end)
 
-  exportDefault({
+  return {
     changeKeyMap = changeKeyMap,
     unRegisterForUserPlayers = unRegisterForUserPlayers,
     registerForUserPlayers = registerForUserPlayers
-  })
+  }
 end)
